@@ -41,4 +41,9 @@ public class UserServiceImp implements UserService {
     public void update(long id, User user) {
         userDao.update(id, user);
     }
+
+    @Override
+    public User findByUser_login(String name) {
+        return userDao.findByUser_login(name);
+    }
 }

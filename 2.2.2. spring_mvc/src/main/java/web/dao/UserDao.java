@@ -5,6 +5,8 @@ import web.models.User;
 import java.util.List;
 
 public interface UserDao {
+    User findByUser_login(String login_name);
+
     List<User> getAll();
 
     User getOne(long id);
