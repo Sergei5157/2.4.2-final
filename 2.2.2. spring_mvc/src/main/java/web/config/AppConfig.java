@@ -71,7 +71,6 @@ public class AppConfig {
 
     @Bean
     public HibernateJpaVendorAdapter jpaVendorAdapter() {
-        // hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
         return new HibernateJpaVendorAdapter();
     }
 

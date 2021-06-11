@@ -1,27 +1,19 @@
 package web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import web.models.Role;
 import web.models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Repository
 public class UserDaoImp implements UserDao {
 
     @PersistenceContext(unitName = "entityManagerFactory")
     private EntityManager entityManager;
-
-    @Autowired
-    private RoleDao roleDao;
 
     @Override
     public List<User> getAll() {
@@ -37,10 +29,6 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void add(User user) {
-        user.setPassword(user.getPassword());
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleDao.getOne(1L));
-        user.setRoles(roles);
         entityManager.persist(user);
     }
 
@@ -55,6 +43,8 @@ public class UserDaoImp implements UserDao {
         User userUpdate = getOne(id);
         userUpdate.setName(user.getName());
         userUpdate.setAge(user.getAge());
+        userUpdate.setPassword(user.getPassword());
+        userUpdate.setRoles(user.getRoles());
         userUpdate.setSalary(user.getSalary());
     }
 

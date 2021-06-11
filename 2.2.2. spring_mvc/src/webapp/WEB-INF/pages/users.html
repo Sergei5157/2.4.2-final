@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html   xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
         class="row" th:classappend="${state.odd}">
         <td th:utext="${users.id}">ID</td>
         <td th:utext="${users.name}">Name</td>
-        <td><form th:method="GET" th:action="@{user/{id}(id=${users.getId()})}">
+        <td><form th:method="GET" th:action="@{/user/{id}(id=${users.getId()})}">
             <input type="submit" value="info">
         </form>
             <br>
@@ -37,6 +37,9 @@
             </form>
     </tr>
 </table>
-<a href="new.html">add </a></td>
+<a href="new.html">add </a>
+<br/>
+<a href="/" th:href="@{/}">Return to the homepage</a>
+</td>
 </body>
 </html>

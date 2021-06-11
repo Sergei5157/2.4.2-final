@@ -4,20 +4,21 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
 @Data
+@Table(name = "roles")
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
-    @Column
+    @Column(name = "role")
     private String name;
     @Transient
-    @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+    private Set<User> users;
 
     public Role() {
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 <body>
 <h1>User Add</h1>
 
-<form th:method="POST"  th:action="@{newuser}" th:object="${user}">
+<form th:method="POST" th:action="@{newuser}" th:object="${user}">
     <label for="name">Name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <br/>
@@ -18,8 +18,20 @@
     <label for="salary">Salary: </label>
     <input type="text" th:field="*{salary}" id="salary"/>
     <br/>
-    <input type="submit" value="Add">
-</form>
+    <label for="password">Password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <br/>
+
+    <form th:action="@{newuser}" th:method="PATCH">
+        <label for="userId">USER</label>
+        <input type="checkbox" id="userId" name="roleId" value="1"/>
+        <br/>
+        <label for="adminId">ADMIN</label>
+        <input type="checkbox" id="adminId" name="roleId" value="2"/>
+        <br/>
+        <input type="submit" value="Add">
+    </form>
+
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,12 @@
         <h1 th:text="${msg}"></h1>
     </th:block>
 </div>
-<a href="users">Get a list of all users </a>
+<div sec:authorize="isAnonymous()">
+    <a href="/login" th:href="@{/login}">Sign In</a>
+</div>
+<br/>
+<div sec:authorize="isAuthenticated()">
+    <a href="/logout" th:href="@{/logout}">Exit</a>
+</div>
 </body>
 </html>
