@@ -23,13 +23,14 @@
     <br/>
 
     <form th:action="@{newuser}" th:method="PATCH">
-        <label for="userId">USER</label>
-        <input type="checkbox" id="userId" name="roleId" value="1"/>
-        <br/>
-        <label for="adminId">ADMIN</label>
-        <input type="checkbox" id="adminId" name="roleId" value="2"/>
-        <br/>
+        <tr th:each="role, state : ${role}"
+            class="row" th:classappend="${state.odd}">
+            <label th:text="${role.name}" for="roleId"></label>
+            <input type="checkbox" id="roleId" name="roleId" th:value="${role.id}"/>
+            <br/>
+        </tr>
         <input type="submit" value="Add">
+
     </form>
 
 
